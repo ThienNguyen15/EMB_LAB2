@@ -8,10 +8,7 @@
 #ifndef INC_SOFTWARE_TIMER_H_
 #define INC_SOFTWARE_TIMER_H_
 
-#include "software_timer.h"
-
 #include "tim.h"
-#include "led_7seg.h"
 
 extern uint16_t flag_timer2;
 
