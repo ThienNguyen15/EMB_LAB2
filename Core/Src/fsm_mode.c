@@ -140,7 +140,7 @@ void fsm_mode()
 						RedYellowLed();
 					}
 				}
-				if(button_count[1] != 0)
+				if(button_count[0] != 0)
 					changemode = 1;
 			}
 			else
@@ -159,7 +159,7 @@ void fsm_mode()
 						GreenRedLed();
 					}
 				}
-				if(button_count[1] != 0)
+				if(button_count[0] != 0)
 					changemode = 1;
 			}
 			else
@@ -178,7 +178,7 @@ void fsm_mode()
 						YellowRedLed();
 					}
 				}
-				if(button_count[1] != 0)
+				if(button_count[0] != 0)
 					changemode = 1;
 			}
 			else
@@ -198,7 +198,7 @@ void fsm_mode()
 						RedGreenLed();
 					}
 				}
-				if(button_count[1] != 0)
+				if(button_count[0] != 0)
 					changemode = 1;
 			}
 			else
@@ -211,11 +211,11 @@ void fsm_mode()
 				setTimer1(500);
 				Blink();
 			}
-			if(button_count[1] != 0)
+			if(button_count[0] != 0)
 				switchManualMode(ManGreen, ManGreenLed);
-			if(button_count[2] != 0)
+			if(button_count[1] != 0)
 				increase();
-			if(button_count[3] != 0)
+			if(button_count[2] != 0)
 				balance(timer, timeGreen, timeYellow);
 			break;
 		case ManGreen:
@@ -225,11 +225,11 @@ void fsm_mode()
 				setTimer1(500);
 				Blink();
 			}
-			if(button_count[1] != 0)
+			if(button_count[0] != 0)
 				switchManualMode(ManYellow, ManYellowLed);
-			if(button_count[2] != 0)
+			if(button_count[1] != 0)
 				increase();
-			if(button_count[3] != 0)
+			if(button_count[2] != 0)
 				balance(timeRed, timer, timeYellow);
 			break;
 		case ManYellow:
@@ -239,7 +239,7 @@ void fsm_mode()
 				setTimer1(500);
 				Blink();
 			}
-			if(button_count[1] != 0)
+			if(button_count[0] != 0)
 			{
 				setTimer1(500);
 				mode = RedGreen;
@@ -247,9 +247,9 @@ void fsm_mode()
 				timer = timeRed;
 				RedGreenLed();
 			}
-			if(button_count[2] != 0)
+			if(button_count[1] != 0)
 				increase();
-			if(button_count[3] != 0)
+			if(button_count[2] != 0)
 				balance(timeRed, timeGreen, timer);
 			break;
 
