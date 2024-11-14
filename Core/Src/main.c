@@ -114,10 +114,10 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-//	  while(!flag_timer2);
-//	  flag_timer2 = 0;
-//	  button_Scan();
-//	  test_LedDebug();
+	  while(!flag_timer2);
+	  flag_timer2 = 0;
+	  button_Scan();
+	  test_LedDebug();
 //	  ds3231_ReadTime();
 //	  test_Uart();
 	  fsm_mode();
