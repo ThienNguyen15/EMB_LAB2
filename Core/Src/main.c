@@ -35,6 +35,8 @@
 #include "picture.h"
 #include "ds3231.h"
 #include "uart.h"
+
+#include "global.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -112,12 +114,13 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  while(!flag_timer2);
-	  flag_timer2 = 0;
-	  button_Scan();
-	  test_LedDebug();
-	  ds3231_ReadTime();
-	  test_Uart();
+//	  while(!flag_timer2);
+//	  flag_timer2 = 0;
+//	  button_Scan();
+//	  test_LedDebug();
+//	  ds3231_ReadTime();
+//	  test_Uart();
+	  fsm_mode();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
