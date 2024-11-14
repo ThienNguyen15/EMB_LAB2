@@ -13,6 +13,7 @@
 
 void initializeTime();
 void updateTime(int new_year, int new_month, int new_date, int new_day, int new_hour, int new_min, int new_sec);
+void updateAlarmTime(int new_year, int new_month, int new_date, int new_day, int new_hour, int new_min, int new_sec);
 void displayTime();
 void displayStatus();
 

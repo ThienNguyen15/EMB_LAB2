@@ -11,7 +11,7 @@
 
 uint8_t ds3231_buffer[7];
 
-uint8_t ds3231_hours;
+uint8_t ds3231_hour;
 uint8_t ds3231_min;
 uint8_t ds3231_sec;
 uint8_t ds3231_date;
@@ -41,7 +41,7 @@ void ds3231_ReadTime(){
 	HAL_I2C_Mem_Read(&hi2c1, DS3231_ADDRESS, 0x00, I2C_MEMADD_SIZE_8BIT, ds3231_buffer, 7, 10);
 	ds3231_sec = BCD2DEC(ds3231_buffer[0]);
 	ds3231_min = BCD2DEC(ds3231_buffer[1]);
-	ds3231_hours = BCD2DEC(ds3231_buffer[2]);
+	ds3231_hour = BCD2DEC(ds3231_buffer[2]);
 	ds3231_day = BCD2DEC(ds3231_buffer[3]);
 	ds3231_date = BCD2DEC(ds3231_buffer[4]);
 	ds3231_month = BCD2DEC(ds3231_buffer[5]);

@@ -19,7 +19,7 @@
 #define ADDRESS_MONTH		0x05
 #define ADDRESS_YEAR		0x06
 
-extern uint8_t ds3231_hours;
+extern uint8_t ds3231_hour;
 extern uint8_t ds3231_min;
 extern uint8_t ds3231_sec;
 extern uint8_t ds3231_date;

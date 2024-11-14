@@ -205,7 +205,7 @@ void test_button(){
 
 void test_Uart(){
 	if(button_count[12] == 1){
-		uart_Rs232SendNum(ds3231_hours);
+		uart_Rs232SendNum(ds3231_hour);
 		uart_Rs232SendString(":");
 		uart_Rs232SendNum(ds3231_min);
 		uart_Rs232SendString(":");

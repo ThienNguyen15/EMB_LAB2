@@ -13,13 +13,13 @@ int timer1 = 0;
 int timer2 = 0;
 int is_pressed = 0;
 
-int year = 24;
-int month = 11;
-int date = 15;
-int day = 6;
-int hour = 15;
-int min = 15;
-int sec = 15;
+int year_temp = 0;
+int month_temp = 0;
+int date_temp = 0;
+int day_temp = 0;
+int hour_temp = 0;
+int min_temp = 0;
+int sec_temp = 0;
 
 int year_alarm = 0;
 int month_alarm = 0;
