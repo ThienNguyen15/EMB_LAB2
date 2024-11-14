@@ -117,7 +117,7 @@ int main(void)
 	  button_Scan();
 	  test_LedDebug();
 	  ds3231_ReadTime();
-	  test_Uart();
+//	  test_Uart();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
