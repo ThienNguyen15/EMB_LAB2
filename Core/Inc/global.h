@@ -31,14 +31,21 @@
 
 
 
-#define ModeInit	0
+#define ModeInit			0
+#define NormalMode			1
+#define SettingMode			2
+#define AlarmSettingMode	3
 
 
 // global variables
 extern int mode;
 extern int changemode;
 
-extern int timer;
+extern int year, month, date;
+extern int day;
+extern int hour, min, sec;
+
+extern int current_parameter;
 
 extern int blinkstate;
 
