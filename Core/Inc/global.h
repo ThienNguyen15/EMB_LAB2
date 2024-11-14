@@ -43,7 +43,6 @@
 
 // global variables
 extern int mode;
-extern int changemode;
 
 extern int timeRed;
 extern int timeYellow;

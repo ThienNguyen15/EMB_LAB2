@@ -124,84 +124,63 @@ void fsm_mode()
 			setTimer1(500);
 			timer = timeRed;
 			mode = RedGreen;
-			changemode = 0;
 			RedGreenLed();
 			break;
 		case RedGreen:
-			if(changemode == 0)
+			if(flag_timer1 == 1)
 			{
-				if(flag_timer1 == 1)
+				setTimer1(500);
+				timer--;
+				if(timer <= timeYellow)
 				{
-					setTimer1(500);
-					timer--;
-					if(timer <= timeYellow)
-					{
-						mode = RedYellow;
-						RedYellowLed();
-					}
+					mode = RedYellow;
+					RedYellowLed();
 				}
-				if(button_count[0] != 0)
-					changemode = 1;
 			}
-			else
+			if(button_count[0] != 0)
 				switchManualMode(ManRed, ManRedLed);
 			break;
 		case RedYellow:
-			if(changemode == 0)
+			if(flag_timer1 == 1)
 			{
-				if(flag_timer1 == 1)
+				setTimer1(500);
+				timer--;
+				if(timer <= 0)
 				{
-					setTimer1(500);
-					timer--;
-					if(timer <= 0)
-					{
-						mode = GreenRed;
-						GreenRedLed();
-					}
+					mode = GreenRed;
+					GreenRedLed();
 				}
-				if(button_count[0] != 0)
-					changemode = 1;
 			}
-			else
+			if(button_count[0] != 0)
 				switchManualMode(ManRed, ManRedLed);
 			break;
 		case GreenRed:
-			if(changemode == 0)
+			if(flag_timer1 == 1)
 			{
-				if(flag_timer1 == 1)
+				setTimer1(500);
+				timer--;
+				if(timer <= timeYellow)
 				{
-					setTimer1(500);
-					timer--;
-					if(timer <= timeYellow)
-					{
-						mode = YellowRed;
-						YellowRedLed();
-					}
+					mode = YellowRed;
+					YellowRedLed();
 				}
-				if(button_count[0] != 0)
-					changemode = 1;
 			}
-			else
+			if(button_count[0] != 0)
 				switchManualMode(ManRed, ManRedLed);
 			break;
 		case YellowRed:
-			if(changemode == 0)
+			if(flag_timer1 == 1)
 			{
-				if(flag_timer1 == 1)
+				setTimer1(500);
+				timer--;
+				if(timer <= 0)
 				{
-					setTimer1(500);
-					timer--;
-					if(timer <= 0)
-					{
-						mode = RedGreen;
-						timer = timeRed;
-						RedGreenLed();
-					}
+					mode = RedGreen;
+					timer = timeRed;
+					RedGreenLed();
 				}
-				if(button_count[0] != 0)
-					changemode = 1;
 			}
-			else
+			if(button_count[0] != 0)
 				switchManualMode(ManRed, ManRedLed);
 			break;
 		case ManRed:
@@ -243,7 +222,6 @@ void fsm_mode()
 			{
 				setTimer1(500);
 				mode = RedGreen;
-				changemode = 0;
 				timer = timeRed;
 				RedGreenLed();
 			}

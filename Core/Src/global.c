@@ -8,7 +8,6 @@
 #include "global.h"
 
 int mode = ModeInit;
-int changemode = 0;
 
 int timeRed = 10;
 int timeYellow = 4;
