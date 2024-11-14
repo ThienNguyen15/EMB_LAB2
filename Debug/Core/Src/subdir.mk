@@ -7,7 +7,9 @@
 C_SRCS += \
 ../Core/Src/button.c \
 ../Core/Src/ds3231.c \
+../Core/Src/fsm_mode.c \
 ../Core/Src/fsmc.c \
+../Core/Src/global.c \
 ../Core/Src/gpio.c \
 ../Core/Src/i2c.c \
 ../Core/Src/lcd.c \
@@ -29,7 +31,9 @@ C_SRCS += \
 OBJS += \
 ./Core/Src/button.o \
 ./Core/Src/ds3231.o \
+./Core/Src/fsm_mode.o \
 ./Core/Src/fsmc.o \
+./Core/Src/global.o \
 ./Core/Src/gpio.o \
 ./Core/Src/i2c.o \
 ./Core/Src/lcd.o \
@@ -51,7 +55,9 @@ OBJS += \
 C_DEPS += \
 ./Core/Src/button.d \
 ./Core/Src/ds3231.d \
+./Core/Src/fsm_mode.d \
 ./Core/Src/fsmc.d \
+./Core/Src/global.d \
 ./Core/Src/gpio.d \
 ./Core/Src/i2c.d \
 ./Core/Src/lcd.d \
