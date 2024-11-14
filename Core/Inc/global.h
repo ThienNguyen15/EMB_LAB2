@@ -32,26 +32,14 @@
 
 
 #define ModeInit	0
-#define RedGreen	1
-#define RedYellow	2
-#define GreenRed	3
-#define YellowRed	4
 
-#define ManRed		5
-#define ManYellow	6
-#define ManGreen	7
 
 // global variables
 extern int mode;
 extern int changemode;
 
-extern int timeRed;
-extern int timeYellow;
-extern int timeGreen;
-
 extern int timer;
 
-extern int binkLed;
 extern int blinkstate;
 
 #endif /* INC_GLOBAL_H_ */
