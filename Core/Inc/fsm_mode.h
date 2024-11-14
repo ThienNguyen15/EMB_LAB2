@@ -16,6 +16,12 @@ void updateTime(int new_year, int new_month, int new_date, int new_day, int new_
 void displayTime();
 void displayStatus();
 
+void increment();
+void incrementParameter();
+
+int checkAlarmTime();
+void warnAlarmTime();
+
 void fsm_mode();
 
 #endif /* INC_FSM_MODE_H_ */

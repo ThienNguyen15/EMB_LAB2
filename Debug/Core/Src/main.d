@@ -38,7 +38,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/spi.h ../Core/Inc/button.h ../Core/Inc/gpio.h \
  ../Core/Inc/lcd.h ../Core/Inc/picture.h ../Core/Inc/ds3231.h \
  ../Core/Inc/i2c.h ../Core/Inc/utils.h ../Core/Inc/uart.h \
- ../Core/Inc/usart.h
+ ../Core/Inc/usart.h ../Core/Inc/global.h ../Core/Inc/software_timer.h \
+ ../Core/Inc/button.h ../Core/Inc/fsm_mode.h ../Core/Inc/global.h \
+ ../Core/Inc/fsmc.h ../Core/Inc/led_7seg.h ../Core/Inc/lcd.h \
+ ../Core/Inc/picture.h ../Core/Inc/ds3231.h ../Core/Inc/uart.h
 
 ../Core/Inc/main.h:
 
@@ -147,3 +150,25 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/uart.h:
 
 ../Core/Inc/usart.h:
+
+../Core/Inc/global.h:
+
+../Core/Inc/software_timer.h:
+
+../Core/Inc/button.h:
+
+../Core/Inc/fsm_mode.h:
+
+../Core/Inc/global.h:
+
+../Core/Inc/fsmc.h:
+
+../Core/Inc/led_7seg.h:
+
+../Core/Inc/lcd.h:
+
+../Core/Inc/picture.h:
+
+../Core/Inc/ds3231.h:
+
+../Core/Inc/uart.h:

@@ -35,6 +35,8 @@
 #include "picture.h"
 #include "ds3231.h"
 #include "uart.h"
+
+#include "global.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -114,6 +116,9 @@ int main(void)
     /* USER CODE END WHILE */
 	  while(!flag_timer2);
 	  flag_timer2 = 0;
+	  timer1++;
+	  if(timer1 >= 200)
+		  timer1 = 0;
 	  button_Scan();
 	  test_LedDebug();
 	  ds3231_ReadTime();

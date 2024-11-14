@@ -39,11 +39,20 @@
 
 // global variables
 extern int mode;
-extern int changemode;
 
 extern int year, month, date;
 extern int day;
 extern int hour, min, sec;
+
+extern int year_alarm, month_alarm, date_alarm;
+extern int day_alarm;
+extern int hour_alarm, min_alarm, sec_alarm;
+
+extern int timer1;
+extern int timer2;
+extern int is_pressed;
+
+extern int alarm_on;
 
 extern int current_parameter;
 
