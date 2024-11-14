@@ -51,7 +51,6 @@ extern int timeGreen;
 
 extern int timer;
 
-extern int binkLed;
 extern int blinkstate;
 
 #endif /* INC_GLOBAL_H_ */

@@ -16,5 +16,4 @@ int timeGreen = 6;
 
 int timer = 0;
 
-int blinkLed = 1;
 int blinkstate = 0;
