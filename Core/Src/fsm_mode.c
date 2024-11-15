@@ -42,32 +42,34 @@ void updateAlarmTime(int new_year, int new_month, int new_date, int new_day, int
 void displayTime()
 {
     int blinkColor1, blinkColor2;
-
-    if ((mode == SettingMode || mode == AlarmSettingMode) && (timer1 % 10) == 0)
+    if(timer1 % 10 == 0)
     {
-        blinkstate ^= 1;
-        blinkColor1 = (blinkstate == 1) ? GREEN : BLACK;
-        blinkColor2 = (blinkstate == 1) ? YELLOW : BLACK;
+    	if ((mode == SettingMode || mode == AlarmSettingMode))
+    	{
+    		blinkstate ^= 1;
+    		blinkColor1 = (blinkstate == 1) ? GREEN : BLACK;
+    		blinkColor2 = (blinkstate == 1) ? YELLOW : BLACK;
 
-        lcd_ShowIntNum(70, 130, hour_temp, 2, (current_parameter == 2) ? blinkColor1 : GREEN, BLACK, 24);
-        lcd_ShowIntNum(110, 130, min_temp, 2, (current_parameter == 1) ? blinkColor1 : GREEN, BLACK, 24);
-        lcd_ShowIntNum(150, 130, sec_temp, 2, (current_parameter == 0) ? blinkColor1 : GREEN, BLACK, 24);
+    		lcd_ShowIntNum(70, 130, hour_temp, 2, (current_parameter == 2) ? blinkColor1 : GREEN, BLACK, 24);
+    		lcd_ShowIntNum(110, 130, min_temp, 2, (current_parameter == 1) ? blinkColor1 : GREEN, BLACK, 24);
+    		lcd_ShowIntNum(150, 130, sec_temp, 2, (current_parameter == 0) ? blinkColor1 : GREEN, BLACK, 24);
 
-        lcd_ShowIntNum(20, 100, day_temp, 2, (current_parameter == 3) ? blinkColor2 : YELLOW, BLACK, 24);
-        lcd_ShowIntNum(70, 100, date_temp, 2, (current_parameter == 4) ? blinkColor2 : YELLOW, BLACK, 24);
-        lcd_ShowIntNum(110, 100, month_temp, 2, (current_parameter == 5) ? blinkColor2 : YELLOW, BLACK, 24);
-        lcd_ShowIntNum(150, 100, year_temp, 2, (current_parameter == 6) ? blinkColor2 : YELLOW, BLACK, 24);
-    }
-    else
-    {
-    	lcd_ShowIntNum(70, 130, ds3231_hour, 2, GREEN, BLACK, 24);
-    	lcd_ShowIntNum(110, 130, ds3231_min, 2, GREEN, BLACK, 24);
-    	lcd_ShowIntNum(150, 130, ds3231_sec, 2, GREEN, BLACK, 24);
+    		lcd_ShowIntNum(20, 100, day_temp, 2, (current_parameter == 3) ? blinkColor2 : YELLOW, BLACK, 24);
+    		lcd_ShowIntNum(70, 100, date_temp, 2, (current_parameter == 4) ? blinkColor2 : YELLOW, BLACK, 24);
+    		lcd_ShowIntNum(110, 100, month_temp, 2, (current_parameter == 5) ? blinkColor2 : YELLOW, BLACK, 24);
+    		lcd_ShowIntNum(150, 100, year_temp, 2, (current_parameter == 6) ? blinkColor2 : YELLOW, BLACK, 24);
+    	}
+    	else
+    	{
+    		lcd_ShowIntNum(70, 130, ds3231_hour, 2, GREEN, BLACK, 24);
+    		lcd_ShowIntNum(110, 130, ds3231_min, 2, GREEN, BLACK, 24);
+    		lcd_ShowIntNum(150, 130, ds3231_sec, 2, GREEN, BLACK, 24);
 
-    	lcd_ShowIntNum(20, 100, ds3231_day, 2, YELLOW, BLACK, 24);
-    	lcd_ShowIntNum(70, 100, ds3231_date, 2, YELLOW, BLACK, 24);
-    	lcd_ShowIntNum(110, 100, ds3231_month, 2, YELLOW, BLACK, 24);
-    	lcd_ShowIntNum(150, 100, ds3231_year, 2, YELLOW, BLACK, 24);
+    		lcd_ShowIntNum(20, 100, ds3231_day, 2, YELLOW, BLACK, 24);
+    		lcd_ShowIntNum(70, 100, ds3231_date, 2, YELLOW, BLACK, 24);
+    		lcd_ShowIntNum(110, 100, ds3231_month, 2, YELLOW, BLACK, 24);
+    		lcd_ShowIntNum(150, 100, ds3231_year, 2, YELLOW, BLACK, 24);
+    	}
     }
 }
 
@@ -93,7 +95,7 @@ void displayStatus()
 
 int checkAlarmTime()
 {
-	return (ds3231_hour == hour_alarm && ds3231_min == min_alarm && ds3231_sec == sec_alarm
+	return (ds3231_hour == hour_alarm && (ds3231_min == min_alarm || ds3231_min == min_alarm + 1) && ds3231_sec == sec_alarm
 			&& ds3231_year == year_alarm && ds3231_month == month_alarm && ds3231_date == date_alarm
 			&& ds3231_day == day_alarm) ? 1 : 0;
 }
@@ -102,17 +104,17 @@ void warnAlarmTime(){lcd_ShowStr(70, 160, (unsigned char *)"ALARM!", WHITE, RED,
 
 void increment()
 {
-	if(alarm_on != 0)
+	if(alarm_on == 0)
 	{
 		switch (current_parameter)
 		{
-		case 0: ds3231_sec = (ds3231_sec + 1) % 60; 		break;
-		case 1: ds3231_min = (ds3231_min + 1) % 60; 		break;
-		case 2: ds3231_hour = (ds3231_hour + 1) % 24; 		break;
-		case 3: ds3231_day = (ds3231_day % 7) + 1; 		break;
-		case 4: ds3231_date = (ds3231_date % 31) + 1; 		break;
-		case 5: ds3231_month = (ds3231_month % 12) + 1; 	break;
-		case 6: ds3231_year = (ds3231_year % 100) + 1; 	break;
+		case 0: sec_temp = (sec_temp + 1) % 60; 		break;
+		case 1: min_temp = (min_temp + 1) % 60; 		break;
+		case 2: hour_temp = (hour_temp + 1) % 24; 		break;
+		case 3: day_temp = (day_temp % 7) + 1; 			break;
+		case 4: date_temp = (date_temp % 31) + 1; 		break;
+		case 5: month_temp = (month_temp % 12) + 1; 	break;
+		case 6: year_temp = (year_temp % 100) + 1; 		break;
 		}
 	}
 	else
@@ -132,7 +134,7 @@ void increment()
 
 void incrementParameter()
 {
-	if (button_count[4] != 0)
+	if (button_count[4] >= 3)
 	{
 		if(timer2 == 0 && is_pressed == 0)
 			increment();
@@ -157,7 +159,6 @@ void incrementParameter()
 void fsm_mode()
 {
 	ds3231_ReadTime();
-	lcd_Clear(WHITE);
 	if(checkAlarmTime() && alarm_on == 1)
 		warnAlarmTime();
 
@@ -165,12 +166,13 @@ void fsm_mode()
     {
         case ModeInit:
             initializeTime();
+            ds3231_ReadTime();
             mode = NormalMode;
             break;
 
         case NormalMode:
         	displayStatus();
-            if(button_count[0] != 0)
+            if(button_count[0] >= 3)
             {
                 timer1 = 0;
                 current_parameter = 0;
@@ -188,12 +190,12 @@ void fsm_mode()
 
         case SettingMode:
         	displayStatus();
-            if(button_count[4] != 0)
+            if(button_count[4] >= 3)
             	incrementParameter();
             else
             	timer2 = 0;
 
-            if(button_count[12] != 0)
+            if(button_count[12] >= 3)
             {
                 current_parameter++;
                 if(current_parameter > 6)
@@ -206,7 +208,7 @@ void fsm_mode()
                 updateTime(year_temp, month_temp, date_temp, day_temp, hour_temp, min_temp, sec_temp);
             }
 
-            if(button_count[0] != 0)
+            if(button_count[0] >= 3)
             {
             	timer1 = 0;
             	current_parameter = 0;
@@ -224,12 +226,12 @@ void fsm_mode()
 
         case AlarmSettingMode:
         	displayStatus();
-            if(button_count[4] != 0)
+            if(button_count[4] >= 3)
             	incrementParameter();
             else
             	timer2 = 0;
 
-            if(button_count[12] != 0)
+            if(button_count[12] >= 3)
             {
             	current_parameter++;
             	if(current_parameter > 6)
@@ -240,10 +242,11 @@ void fsm_mode()
             		alarm_on = 1;
             		mode = NormalMode;
             	}
+            	alarm_on = 1;
             	updateAlarmTime(year_temp, month_temp, date_temp, day_temp, hour_temp, min_temp, sec_temp);
             }
 
-            if(button_count[0] != 0)
+            if(button_count[0] >= 3)
             {
             	timer1 = 0;
             	current_parameter = 0;

@@ -107,6 +107,7 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   system_init();
+  lcd_Clear(BLACK);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -121,7 +122,7 @@ int main(void)
 		  timer1 = 0;
 	  button_Scan();
 	  test_LedDebug();
-	  ds3231_ReadTime();
+	  fsm_mode();
 //	  test_Uart();
     /* USER CODE BEGIN 3 */
   }

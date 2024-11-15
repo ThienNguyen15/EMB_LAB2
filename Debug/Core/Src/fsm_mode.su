@@ -2,9 +2,9 @@ fsm_mode.c:10:6:initializeTime	8	static
 fsm_mode.c:21:6:updateTime	24	static
 fsm_mode.c:32:6:updateAlarmTime	24	static
 fsm_mode.c:42:6:displayTime	32	static
-fsm_mode.c:74:6:displayStatus	24	static
-fsm_mode.c:94:5:checkAlarmTime	4	static
-fsm_mode.c:101:6:warnAlarmTime	24	static
-fsm_mode.c:103:6:increment	4	static
-fsm_mode.c:133:6:incrementParameter	8	static
-fsm_mode.c:157:6:fsm_mode	40	static
+fsm_mode.c:76:6:displayStatus	24	static
+fsm_mode.c:96:5:checkAlarmTime	4	static
+fsm_mode.c:103:6:warnAlarmTime	24	static
+fsm_mode.c:105:6:increment	4	static
+fsm_mode.c:135:6:incrementParameter	8	static
+fsm_mode.c:159:6:fsm_mode	40	static
