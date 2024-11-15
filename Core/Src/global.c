@@ -26,10 +26,12 @@ int month_alarm = 11;
 int date_alarm = 15;
 int day_alarm = 6;
 int hour_alarm = 15;
-int min_alarm = 15;
-int sec_alarm = 35;
+int min_alarm = 16;
+int sec_alarm = 17;
 
 int alarm_on = 1;
+
+int state = 0;
 
 int current_parameter = 0;
 

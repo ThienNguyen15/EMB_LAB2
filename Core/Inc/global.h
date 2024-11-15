@@ -54,6 +54,8 @@ extern int is_pressed;
 
 extern int alarm_on;
 
+extern int state;
+
 extern int current_parameter;
 
 extern int blinkstate;
