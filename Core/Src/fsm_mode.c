@@ -88,7 +88,7 @@ void checklogic(int newtimRed, int newtimGreen, int newtimYellow)
 	if((newtimeRed >= newtimeGreen + newtimeYellow) && (newtimeGreen >= newtimeYellow ))
 	{
 		timeRed = newtimeRed;
-		timeGreen = timeRed - newtimeYellow;
+		timeGreen = newtimeRed - newtimeYellow;
 		timeYellow = newtimeYellow;
 	}
 }
@@ -158,7 +158,7 @@ void fsm_mode()
 					RedYellowLed();
 				}
 			}
-			else if(button_count[0] >= 3)
+			if(button_count[0] >= 3)
 			{
 				switchManualMode(ManRed, ManRedLed);
 				timer_temp = timeRed;
@@ -182,7 +182,7 @@ void fsm_mode()
 					GreenRedLed();
 				}
 			}
-			else if(button_count[0] >= 3)
+			if(button_count[0] >= 3)
 			{
 				switchManualMode(ManRed, ManRedLed);
 				timer_temp = timeRed;
@@ -206,7 +206,7 @@ void fsm_mode()
 					YellowRedLed();
 				}
 			}
-			else if(button_count[0] >= 3)
+			if(button_count[0] >= 3)
 			{
 				switchManualMode(ManRed, ManRedLed);
 				timer_temp = timeRed;
@@ -230,7 +230,7 @@ void fsm_mode()
 					RedGreenLed();
 				}
 			}
-			else if(button_count[0] >= 3)
+			if(button_count[0] >= 3)
 			{
 				switchManualMode(ManRed, ManRedLed);
 				timer_temp = timeRed;
@@ -243,17 +243,15 @@ void fsm_mode()
 				counter = 0;
 				Blink();
 			}
-			else if(button_count[0] >= 3)
+			if(button_count[0] >= 3)
 			{
 				switchManualMode(ManGreen, ManGreenLed);
 				timer_temp = timeGreen;
 			}
-			else if(button_count[1] >= 3)
+			if(button_count[1] >= 3)
 				increase();
-			else if(button_count[2] >= 3)
-			{
+			if(button_count[2] >= 3)
 				newtimeRed = timer_temp;
-			}
 			break;
 		case ManGreen:
 			newtimeGreen = timer_temp;
@@ -262,17 +260,15 @@ void fsm_mode()
 				counter = 0;
 				Blink();
 			}
-			else if(button_count[0] >= 3)
+			if(button_count[0] >= 3)
 			{
 				switchManualMode(ManYellow, ManYellowLed);
 				timer_temp = timeYellow;
 			}
-			else if(button_count[1] >= 3)
+			if(button_count[1] >= 3)
 				increase();
-			else if(button_count[2] >= 3)
-			{
+			if(button_count[2] >= 3)
 				newtimeGreen = timer_temp;
-			}
 			break;
 		case ManYellow:
 			newtimeYellow = timer_temp;
@@ -281,7 +277,7 @@ void fsm_mode()
 				counter = 0;
 				Blink();
 			}
-			else if(button_count[0] >= 3)
+			if(button_count[0] >= 3)
 			{
 				counter = 0;
 				checklogic(newtimeRed, newtimeGreen, newtimeYellow);
@@ -290,12 +286,10 @@ void fsm_mode()
 				timer = timeRed;
 				RedGreenLed();
 			}
-			else if(button_count[1] >= 3)
+			if(button_count[1] >= 3)
 				increase();
-			else if(button_count[2] >= 3)
-			{
+			if(button_count[2] >= 3)
 				newtimeYellow = timer_temp;
-			}
 			break;
 
 		default:
