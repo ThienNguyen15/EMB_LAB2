@@ -48,10 +48,16 @@ extern int timeRed;
 extern int timeYellow;
 extern int timeGreen;
 
+extern int newtimeRed;
+extern int newtimeYellow;
+extern int newtimeGreen;
+
 extern int timer;
 extern int timer_temp;
 
 extern int check_timer;
+
+extern int counter;
 
 extern int blinkstate;
 

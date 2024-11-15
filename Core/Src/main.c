@@ -116,6 +116,7 @@ int main(void)
     /* USER CODE END WHILE */
 	  while(!flag_timer2);
 	  flag_timer2 = 0;
+	  counter++;
 	  button_Scan();
 	  test_LedDebug();
 //	  ds3231_ReadTime();
