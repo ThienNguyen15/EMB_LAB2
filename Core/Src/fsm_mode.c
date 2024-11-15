@@ -38,9 +38,9 @@ void ManYellowLed(){drawTrafficLight(0, 0, 1, 0, 0, 1);}
 
 void increase()
 {
-	timer++;
-	if(timer > 99)
-		timer = 1;
+	timer_temp++;
+	if(timer_temp > 99)
+		timer_temp = 1;
 }
 
 void balance(int newtimeRed, int newtimeGreen, int newtimeYellow)
@@ -115,7 +115,10 @@ void switchManualMode(int LEDmode, void (*LEDdisplayfunc)())
 
 void displayTime()
 {
-	lcd_ShowIntNum(20, 30, timer, 2, WHITE, BLACK, 16);
+	if(mode == ManRed || mode == ManGreen || mode == ManYellow)
+		lcd_ShowIntNum(20, 30, timer_temp, 2, WHITE, BLACK, 16);
+	else
+		lcd_ShowIntNum(20, 30, timer, 2, WHITE, BLACK, 16);
 }
 
 void fsm_mode()
@@ -132,7 +135,13 @@ void fsm_mode()
 			if(flag_timer1 == 1)
 			{
 				setTimer1(500);
-				timer--;
+				if(check_timer == 0)
+					check_timer++;
+				if(check_timer == 1)
+				{
+					check_timer = 0;
+					timer--;
+				}
 				if(timer <= timeYellow)
 				{
 					mode = RedYellow;
@@ -146,35 +155,61 @@ void fsm_mode()
 			if(flag_timer1 == 1)
 			{
 				setTimer1(500);
-				timer--;
+				if(check_timer == 0)
+					check_timer++;
+				if(check_timer == 1)
+				{
+					check_timer = 0;
+					timer--;
+				}
 				if(timer <= 0)
 				{
 					mode = GreenRed;
+					timer = timeGreen;
 					GreenRedLed();
 				}
 			}
 			if(button_count[0] != 0)
+			{
 				switchManualMode(ManRed, ManRedLed);
+				timer_temp = timeRed;
+			}
 			break;
 		case GreenRed:
 			if(flag_timer1 == 1)
 			{
 				setTimer1(500);
-				timer--;
-				if(timer <= timeYellow)
+				if(check_timer == 0)
+					check_timer++;
+				if(check_timer == 1)
+				{
+					check_timer = 0;
+					timer--;
+				}
+				if(timer <= 0)
 				{
 					mode = YellowRed;
+					timer = timeYellow;
 					YellowRedLed();
 				}
 			}
 			if(button_count[0] != 0)
+			{
 				switchManualMode(ManRed, ManRedLed);
+				timer_temp = timeRed;
+			}
 			break;
 		case YellowRed:
 			if(flag_timer1 == 1)
 			{
 				setTimer1(500);
-				timer--;
+				if(check_timer == 0)
+					check_timer++;
+				if(check_timer == 1)
+				{
+					check_timer = 0;
+					timer--;
+				}
 				if(timer <= 0)
 				{
 					mode = RedGreen;
@@ -183,10 +218,12 @@ void fsm_mode()
 				}
 			}
 			if(button_count[0] != 0)
+			{
 				switchManualMode(ManRed, ManRedLed);
+				timer_temp = timeRed;
+			}
 			break;
 		case ManRed:
-			timer = timeRed;
 			if(flag_timer1 == 1)
 			{
 				setTimer1(500);
@@ -197,10 +234,12 @@ void fsm_mode()
 			if(button_count[1] != 0)
 				increase();
 			if(button_count[2] != 0)
-				balance(timer, timeGreen, timeYellow);
+			{
+				balance(timer_temp, timeGreen, timeYellow);
+				timer_temp = timeGreen;
+			}
 			break;
 		case ManGreen:
-			timer = timeGreen;
 			if(flag_timer1 == 1)
 			{
 				setTimer1(500);
@@ -211,10 +250,12 @@ void fsm_mode()
 			if(button_count[1] != 0)
 				increase();
 			if(button_count[2] != 0)
-				balance(timeRed, timer, timeYellow);
+			{
+				balance(timeRed, timer_temp, timeYellow);
+				timer_temp = timeYellow;
+			}
 			break;
 		case ManYellow:
-			timer = timeYellow;
 			if(flag_timer1 == 1)
 			{
 				setTimer1(500);
@@ -230,7 +271,7 @@ void fsm_mode()
 			if(button_count[1] != 0)
 				increase();
 			if(button_count[2] != 0)
-				balance(timeRed, timeGreen, timer);
+				balance(timeRed, timeGreen, timer_temp);
 			break;
 
 		default:

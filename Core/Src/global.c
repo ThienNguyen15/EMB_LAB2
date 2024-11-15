@@ -9,10 +9,13 @@
 
 int mode = ModeInit;
 
-int timeRed = 10;
-int timeYellow = 4;
-int timeGreen = 6;
+int timeRed = 5;
+int timeYellow = 2;
+int timeGreen = 3;
 
 int timer = 0;
+int timer_temp = 0;
+
+int check_timer = 0;
 
 int blinkstate = 0;

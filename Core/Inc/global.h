@@ -49,6 +49,9 @@ extern int timeYellow;
 extern int timeGreen;
 
 extern int timer;
+extern int timer_temp;
+
+extern int check_timer;
 
 extern int blinkstate;
 
