@@ -18,6 +18,8 @@ void drawTrafficLight(int verti_Red, int verti_Green, int verti_Yellow, int hori
     lcd_DrawCircle(50, 210, RED, 15, hori_Red);
     lcd_DrawCircle(50, 140, GREEN, 15, hori_Green);
     lcd_DrawCircle(50, 280, YELLOW, 15, hori_Yellow);
+
+    lcd_ShowPicture(80, 200, 90, 90, gImage_l_flag);
 }
 
 void RedGreenLed()	{	drawTrafficLight(1, 0, 0, 0, 1, 0);	}
