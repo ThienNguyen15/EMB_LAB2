@@ -24,6 +24,7 @@ void ManGreenLed();
 
 void increase();
 void balance(int newtimRed, int newtimGreen, int newtimYellow);
+void checklogic(int newtimRed, int newtimGreen, int newtimYellow);
 
 void Blink();
 

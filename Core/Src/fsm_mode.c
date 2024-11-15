@@ -83,6 +83,16 @@ void balance(int newtimeRed, int newtimeGreen, int newtimeYellow)
 	}
 }
 
+void checklogic(int newtimRed, int newtimGreen, int newtimYellow)
+{
+	if((newtimeRed >= newtimeGreen + newtimeYellow) && (newtimeGreen >= newtimeYellow ))
+	{
+		timeRed = newtimeRed;
+		timeGreen = timeRed - newtimeYellow;
+		timeYellow = newtimeYellow;
+	}
+}
+
 void Blink()
 {
     switch (mode)
@@ -227,6 +237,7 @@ void fsm_mode()
 			}
 			break;
 		case ManRed:
+			newtimeRed = timer_temp;
 			if(counter >= 10)
 			{
 				counter = 0;
@@ -240,9 +251,12 @@ void fsm_mode()
 			else if(button_count[1] >= 3)
 				increase();
 			else if(button_count[2] >= 3)
-				balance(timer_temp, timeGreen, timeYellow);
+			{
+				newtimeRed = timer_temp;
+			}
 			break;
 		case ManGreen:
+			newtimeGreen = timer_temp;
 			if(counter >= 10)
 			{
 				counter = 0;
@@ -256,9 +270,12 @@ void fsm_mode()
 			else if(button_count[1] >= 3)
 				increase();
 			else if(button_count[2] >= 3)
-				balance(timeRed, timer_temp, timeYellow);
+			{
+				newtimeGreen = timer_temp;
+			}
 			break;
 		case ManYellow:
+			newtimeYellow = timer_temp;
 			if(counter >= 10)
 			{
 				counter = 0;
@@ -267,6 +284,8 @@ void fsm_mode()
 			else if(button_count[0] >= 3)
 			{
 				counter = 0;
+				checklogic(newtimeRed, newtimeGreen, newtimeYellow);
+
 				mode = RedGreen;
 				timer = timeRed;
 				RedGreenLed();
@@ -274,7 +293,9 @@ void fsm_mode()
 			else if(button_count[1] >= 3)
 				increase();
 			else if(button_count[2] >= 3)
-				balance(timeRed, timeGreen, timer_temp);
+			{
+				newtimeYellow = timer_temp;
+			}
 			break;
 
 		default:

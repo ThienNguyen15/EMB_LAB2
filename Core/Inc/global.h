@@ -55,6 +55,7 @@ extern int newtimeGreen;
 extern int timer;
 extern int timer_temp;
 
+extern int check;
 extern int check_timer;
 
 extern int counter;
