@@ -95,7 +95,9 @@ void displayStatus()
 
 int checkAlarmTime()
 {
-	return (ds3231_hour == hour_alarm && (ds3231_min == min_alarm || ds3231_min == min_alarm + 1) && ds3231_sec == sec_alarm
+	return (ds3231_hour == hour_alarm && (ds3231_min == min_alarm && ds3231_sec == sec_alarm)
+			|| (ds3231_sec >= sec_alarm && ds3231_min == min_alarm)
+			|| (ds3231_sec <= sec_alarm && ds3231_min == min_alarm + 1)
 			&& ds3231_year == year_alarm && ds3231_month == month_alarm && ds3231_date == date_alarm
 			&& ds3231_day == day_alarm) ? 1 : 0;
 }
@@ -134,25 +136,22 @@ void increment()
 
 void incrementParameter()
 {
-	if (button_count[4] >= 3)
+	if(timer2 == 0 && is_pressed == 0)
+		increment();
+	if(is_pressed == 0)
 	{
-		if(timer2 == 0 && is_pressed == 0)
+		timer2++;
+		if(timer2 >= 40)
+		{
+			timer1 = 0;
+			timer2 = 0;
+			is_pressed = 1;
+		}
+	}
+	if(is_pressed == 1)
+	{
+		if((timer1 % 4) == 0)
 			increment();
-		if(is_pressed == 0)
-		{
-			timer2++;
-			if(timer2 >= 40)
-			{
-				timer1 = 0;
-				timer2 = 0;
-				is_pressed = 1;
-			}
-		}
-		if(is_pressed == 1)
-		{
-			if((timer1 % 4) == 0)
-				increment();
-		}
 	}
 }
 
@@ -161,6 +160,8 @@ void fsm_mode()
 	ds3231_ReadTime();
 	if(checkAlarmTime() && alarm_on == 1)
 		warnAlarmTime();
+	else
+		lcd_ShowStr(70, 160, (unsigned char *)"      ", BLACK, BLACK, 16, 0);
 
     switch (mode)
     {
@@ -190,7 +191,7 @@ void fsm_mode()
 
         case SettingMode:
         	displayStatus();
-            if(button_count[4] >= 3)
+            if(button_count[4] >= 5)
             	incrementParameter();
             else
             	timer2 = 0;
@@ -226,7 +227,7 @@ void fsm_mode()
 
         case AlarmSettingMode:
         	displayStatus();
-            if(button_count[4] >= 3)
+            if(button_count[4] >= 5)
             	incrementParameter();
             else
             	timer2 = 0;
